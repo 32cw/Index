@@ -23,6 +23,8 @@ body {
     -webkit-background-size: cover;
     -o-background-size: cover;
     background-position: center 0;
+    opacity: 0.7;
+    filter: alpha(opacity = 75);
 }
 button {
     margin: 18px 18px;
@@ -215,12 +217,12 @@ button {
     transition: all .4s;
 }
 .btn-8:before {
-    left: -30px;
+    left: -20px;
     -webkit-transform: skew(-45deg, 0);
     transform: skew(-45deg, 0);
 }
 .btn-8:after {
-    right: -30px;
+    right: -20px;
     -webkit-transform: skew(-45deg, 0);
     transform: skew(-45deg, 0);
 }

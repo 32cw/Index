@@ -82,7 +82,7 @@ var d = 0;
 
 // 初始化后默认按顺序一直切换背景
 function switchBack() {
-    d++;
+    d = Math.floor(1000 * Math.random());
     var temp = new Image();
     temp.src = api + size + "&d=" + d;
     temp.onload = function () {
