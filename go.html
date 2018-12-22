@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="url" http-equiv="refresh" content="3;url=https://wang64.cn">
-    <title>页面加载中...</title>
+    <meta name="url" http-equiv="refresh" content="5;url=https://wang64.cn">
+    <title>加载中</title>
     <link rel="shortcut icon" href="https://wang64.cn/static/favicon.ico" />
 </head>
 
@@ -51,7 +51,10 @@
         // 更新跳转地址
         var url = getQueryString("url");
         if(url){
-            document.querySelector('meta[name="url"]').setAttribute('content','0;url=' + url);
+            // document.querySelector('meta[name="url"]').setAttribute('content','0;url=' + url);
+            setTimeout(function () {
+                window.location.href = url;
+            }, 200);
         }
         
         // 窗口关闭
