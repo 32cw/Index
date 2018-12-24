@@ -336,3 +336,29 @@ img#logo {
     -o-transform: rotate(360deg); /* Opera */
     filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
+
+#br1, #menu2 {
+    display: inline;
+}
+
+#changeBtn1, #changeBtn2 {
+    display: none;
+}
+
+/* @media screen and (max-width: 1200px) {
+    
+} */
+@media screen and (max-width: 992px) {
+    #br1, #menu2 {
+        display: none;
+    }
+    #changeBtn1, #changeBtn2 {
+        display: inline;
+    }
+}
+/* @media screen and (max-width: 768px) {
+    
+}
+@media screen and (max-width: 480px) {
+    
+} */

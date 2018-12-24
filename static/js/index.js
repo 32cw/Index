@@ -1,24 +1,28 @@
-// 检测是否是手机查看
-var sUserAgent = navigator.userAgent.toLowerCase();
-var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
-var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
-var bIsMidp = sUserAgent.match(/midp/i) == "midp";
-var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
-var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
-var bIsAndroid = sUserAgent.match(/android/i) == "android";
-var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
-var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
-if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
-    // 跳转移动端页面
-    // var csArray = document.getElementsByClassName("cs");
-    // csArray[0].style.marginTop = "7%";
-    document.getElementById('menu1').style.display = 'inline';
+// PC端返回false
+function isMobile() {
+    var viewType = navigator.userAgent.toLowerCase();
+    console.log(viewType);
+    return viewType.match(/(phone|pad|pod|midp|iphone|ipod|iphone os|ios|ipad|android|mobile|blackberry|iemobile|mqqbrowser|juc|rv:1.2.3.4|ucweb|fennec|wosbrowser|browserng|webos|symbian|windows ce|windows mobile|windows phone)/i);
+}
+
+if(isMobile()) {
+    
 } else {
-    document.getElementById('changeBtn1').style.display = 'none';
-    document.getElementById('changeBtn2').style.display = 'none';
-    document.getElementById('br1').innerHTML = '<br/>';
-    document.getElementById('menu1').style.display = 'inline';
-    document.getElementById('menu2').style.display = 'inline';
+    try {
+        $('body').append('<div class="waifu"><div class="waifu-tips"></div><canvas id="live2d" class="live2d"></canvas><div class="waifu-tool"><span class="fui-home"></span> <span class="fui-chat"></span> <span class="fui-eye"></span> <span class="fui-user"></span> <span class="fui-photo"></span> <span class="fui-info-circle"></span> <span class="fui-cross"></span></div></div>');
+        /* $(document.body).append('<script src="https://www.fghrsh.net/zb_users/plugin/live2d/assets/live2d.min.js?v=1.0.5"><\/script>'); */
+        /* 可直接修改部分参数 */
+        live2d_settings['modelId'] = 6;                  // 默认模型 ID
+        live2d_settings['modelTexturesId'] = 3;         // 默认材质 ID
+        live2d_settings['modelStorage'] = false;         // 不储存模型 ID
+        live2d_settings['canTurnToHomePage'] = false;    // 隐藏 返回首页 按钮
+        live2d_settings['waifuEdgeSide'] = 'right:30';   // 看板娘贴边方向
+        live2d_settings['aboutPageUrl'] = 'https://github.com/fghrsh/live2d_demo';   // 关于页地址
+        /* 在 initModel 前添加 */
+        initModel("https://www.fghrsh.net/zb_users/plugin/live2d/assets/waifu-tips.json?v=1.4.2");
+    } catch(err) {
+        console.log('[Error] JQuery is not defined.')
+    }
 }
 
 // 加载播放器
