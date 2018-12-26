@@ -1,12 +1,16 @@
 /* @import url(https://fonts.googleapis.com/css?family=Open+Sans:600); */
-* {
+/* * {
     margin: 0;
     padding: 0;
-}
+} */
 body {
     /* background-color: #f3f9f1; */
     background-color: #3d3b4f;
     /* background-color: #424c50; */
+    /* 隐藏滚动条 */
+    /* overflow-x: hidden;     
+    overflow-y: hidden; */
+    overflow: hidden;
 }
 /* CSS实现自适应不同大小屏幕的背景大图 https://www.jianshu.com/p/5480cd1a5d89 */
 #bg {

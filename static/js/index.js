@@ -5,12 +5,22 @@ function isMobile() {
     return viewType.match(/(phone|pad|pod|midp|iphone|ipod|iphone os|ios|ipad|android|mobile|blackberry|iemobile|mqqbrowser|juc|rv:1.2.3.4|ucweb|fennec|wosbrowser|browserng|webos|symbian|windows ce|windows mobile|windows phone)/i);
 }
 
-if(isMobile()) {
-    
+if (isMobile()) {
+    // 隐藏wenkmPlayerc
+    document.getElementById('wenkmPlayer').style.display = 'none';
+    // 加载APlayer
+    const ap = new APlayer({
+        container: document.getElementById('aplayer'),
+        fixed: true,
+        lrcType: 3,
+        order: 'random',
+        theme: '#000000',
+        volume: 2.0,
+        audio: getLove()
+    });
 } else {
     try {
         $('body').append('<div class="waifu"><div class="waifu-tips"></div><canvas id="live2d" class="live2d"></canvas><div class="waifu-tool"><span class="fui-home"></span> <span class="fui-chat"></span> <span class="fui-eye"></span> <span class="fui-user"></span> <span class="fui-photo"></span> <span class="fui-info-circle"></span> <span class="fui-cross"></span></div></div>');
-        /* $(document.body).append('<script src="https://www.fghrsh.net/zb_users/plugin/live2d/assets/live2d.min.js?v=1.0.5"><\/script>'); */
         /* 可直接修改部分参数 */
         live2d_settings['modelId'] = 6;                  // 默认模型 ID
         live2d_settings['modelTexturesId'] = 3;         // 默认材质 ID
@@ -20,21 +30,15 @@ if(isMobile()) {
         live2d_settings['aboutPageUrl'] = 'https://github.com/fghrsh/live2d_demo';   // 关于页地址
         /* 在 initModel 前添加 */
         initModel("https://www.fghrsh.net/zb_users/plugin/live2d/assets/waifu-tips.json?v=1.4.2");
+
+        // 隐藏APlayer
+        document.getElementById('aplayer').style.display = 'none';
+        // 加载wenkmPlayerc
+        $.ajax({url: 'https://mark.wang64.cn/assets/wenkmPlayer/js/player.js?v=123', dataType:"script", cache: true, async: false});
     } catch(err) {
         console.log('[Error] JQuery is not defined.')
     }
 }
-
-// 加载播放器
-const ap = new APlayer({
-    container: document.getElementById('aplayer'),
-    fixed: true,
-    lrcType: 3,
-    order: 'random',
-    theme: '#000000',
-    volume: 2.0,
-    audio: getLove()
-});
 
 // 加载.....显示
 var i = 0;
