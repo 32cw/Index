@@ -11,6 +11,8 @@ body {
     /* overflow-x: hidden;     
     overflow-y: hidden; */
     overflow: hidden;
+    /* 鼠标默认显示 */
+    cursor: url(https://note.wang64.cn/images/cursor.ico), auto;
 }
 /* CSS实现自适应不同大小屏幕的背景大图 https://www.jianshu.com/p/5480cd1a5d89 */
 #bg {
