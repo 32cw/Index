@@ -88,17 +88,25 @@ var api3 = "https://cn.bing.com/cnhp/coverstory";
 var size = "?h=1080&w=1920";
 var d = 0;
 
+// Bing壁纸加速接口
+var bingPic = {};
+
 // 初始化后默认按顺序一直切换背景
 function switchBack() {
-    d = Math.floor(1000 * Math.random());
+    // d = Math.floor(1000 * Math.random());
     var temp = new Image();
-    temp.src = api + size + "&d=" + d;
+    // temp.src = api + size + "&d=" + d;
+    bingPic = getPic(true);
+    temp.src = bingPic.url;
     temp.onload = function () {
         setTimeout(function fn(){
-            document.getElementById('bg').style.backgroundImage = "url(" + api + size + "&d=" + d + ")";
+            // document.getElementById('bg').style.backgroundImage = "url(" + api + size + "&d=" + d + ")";
+            document.getElementById('bg').style.backgroundImage = "url(" + bingPic.url + ")";
             $("#bg").hide().fadeIn(1000);
+            document.getElementById('logo').title = bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright;
+            document.getElementById('photoMsg').title = bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright;
             switchBack();
-        }, 3000);
+        }, 5000);
     }
 }
 
@@ -109,7 +117,7 @@ try {
         // console.log(getStyle(document.getElementById("size"), "fontSize"));
         size = "?h=1920&w=1080";
     } */
-    var url = api + size;
+    // var url = api + size;
     var date = new Date();
     var seconds = date.getSeconds();
     String(seconds).length < 2 ? (seconds = "0" + seconds) : seconds;
@@ -117,29 +125,33 @@ try {
     seconds = seconds.toString().substring(1, 2);
     // console.log(seconds);
     if (seconds == 0 || seconds == 3 || seconds == 7 || getQueryString("rand")) {
-        url = api2 + size;
+        // url = api2 + size;
+        bingPic = getPic(true);
         document.getElementById("msg").innerHTML = "背景切换中";
     } else {
+        bingPic = getPic(false);
         document.getElementById("msg").innerHTML = "背景加载中";
     }
     var myVar = setInterval("myTimer()", 400);
     var img = new Image();
-    img.src = url;
+    // img.src = url;
+    img.src = bingPic.url;
     img.onload = function () {
-        document.getElementById('bg').style.backgroundImage = "url(" + url + ")";
+        // document.getElementById('bg').style.backgroundImage = "url(" + url + ")";
+        document.getElementById('bg').style.backgroundImage = "url(" + bingPic.url + ")";
         $("#bg").hide().fadeIn(1000);
+        document.getElementById('logo').title = bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright;
         document.getElementById('photoMsg').innerHTML = '每天看着励志的语录却过着颓废的人生';
+        document.getElementById('photoMsg').title = bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright;
         document.getElementById('photoMsg').style.color = 'rgb(245, 244, 239)';
-        clearInterval(myVar);
         switchBack();
     }
 } catch(err) {
     document.getElementById('photoMsg').innerHTML = '每天看着励志的语录却过着颓废的人生';
     document.getElementById('photoMsg').style.color = 'rgb(245, 244, 239)';
-    clearInterval(myVar);
     switchBack();
 } finally {
-    
+    clearInterval(myVar);
 }
 
 // 切换菜单
@@ -162,3 +174,5 @@ function changeMenu(btn) {
 function changeBack() {
     window.location.href = "https://wang64.cn?rand=true";
 }
+
+// 获取壁纸
