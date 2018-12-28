@@ -1,7 +1,7 @@
 // PC端返回false
 function isMobile() {
     var viewType = navigator.userAgent.toLowerCase();
-    console.log(viewType);
+    // console.log(viewType);
     return viewType.match(/(phone|pad|pod|midp|iphone|ipod|iphone os|ios|ipad|android|mobile|blackberry|iemobile|mqqbrowser|juc|rv:1.2.3.4|ucweb|fennec|wosbrowser|browserng|webos|symbian|windows ce|windows mobile|windows phone)/i);
 }
 
@@ -105,8 +105,13 @@ function switchBack() {
             $("#bg").hide().fadeIn(1000);
             document.getElementById('logo').title = bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright;
             document.getElementById('photoMsg').title = bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright;
+            if (isMobile()) {
+
+            } else {
+                wenkmTips.show(bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright);
+            }
             switchBack();
-        }, 5000);
+        }, 8888);
     }
 }
 
