@@ -296,13 +296,17 @@ button {
 }
 .container h3 {
     color: rgba(42, 144, 212, 0.6);
+    font-weight: bold;
+    font-size: 1.35em;
 }
 .container h4 {
     color: rgb(245, 244, 239);
+    font-weight: bold;
+    font-size: 1.35em;
 }
 .noxiao {
-    margin-top: 18px;
-    margin-bottom: 36px;
+    margin-top: 23px;
+    margin-bottom: 33px;
 }
 a {
     text-decoration:none;
