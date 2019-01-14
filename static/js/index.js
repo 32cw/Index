@@ -99,7 +99,8 @@ function switchBack() {
     bingPic = getPic(true);
     temp.src = bingPic.url;
     temp.onload = function () {
-        setTimeout(function fn(){
+        // var mySwitchBack = setTimeout(function fn() {
+        setTimeout(function fn() {
             // document.getElementById('bg').style.backgroundImage = "url(" + api + size + "&d=" + d + ")";
             document.getElementById('bg').style.backgroundImage = "url(" + bingPic.url + ")";
             $("#bg").hide().fadeIn(1000);
@@ -149,14 +150,16 @@ try {
         document.getElementById('photoMsg').innerHTML = '每天看着励志的语录却过着颓废的人生';
         document.getElementById('photoMsg').title = bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright;
         document.getElementById('photoMsg').style.color = 'rgb(245, 244, 239)';
+        clearInterval(myVar);
         switchBack();
     }
 } catch(err) {
     document.getElementById('photoMsg').innerHTML = '每天看着励志的语录却过着颓废的人生';
     document.getElementById('photoMsg').style.color = 'rgb(245, 244, 239)';
+    clearInterval(myVar);
     switchBack();
 } finally {
-    clearInterval(myVar);
+    
 }
 
 // 切换菜单
@@ -180,4 +183,14 @@ function changeBack() {
     window.location.href = "https://wang64.cn?rand=true";
 }
 
-// 获取壁纸
+// 浏览器切换事件
+/* document.addEventListener('visibilitychange', function() {
+    // 状态判断
+    if (document.visibilityState == 'hidden') {
+        // 切换窗口停止换背景
+        clearInterval(mySwitchBack);
+    } else {
+        // 切换窗口回来继续换背景
+        switchBack();
+    }
+}); */
