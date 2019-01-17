@@ -91,7 +91,7 @@ var d = 0;
 // Bing壁纸加速接口
 var bingPic = {};
 
-// 初始化后默认按顺序一直切换背景
+// 初始化后切换背景
 function switchBack() {
     // d = Math.floor(1000 * Math.random());
     var temp = new Image();
@@ -99,18 +99,16 @@ function switchBack() {
     bingPic = getPic(true);
     temp.src = bingPic.url;
     temp.onload = function () {
-        // var mySwitchBack = setTimeout(function fn() {
-        setTimeout(function fn() {
+        var mySwitchBack = setTimeout(function fn() {
             // document.getElementById('bg').style.backgroundImage = "url(" + api + size + "&d=" + d + ")";
             document.getElementById('bg').style.backgroundImage = "url(" + bingPic.url + ")";
             $("#bg").hide().fadeIn(1000);
             document.getElementById('logo').title = bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright;
             document.getElementById('photoMsg').title = bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright;
-            if (isMobile()) {
-
-            } else {
+            if (!isMobile()) {
                 wenkmTips.show(bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright);
             }
+            clearTimeout(mySwitchBack);
             switchBack();
         }, 8888);
     }
@@ -188,7 +186,8 @@ function changeBack() {
     // 状态判断
     if (document.visibilityState == 'hidden') {
         // 切换窗口停止换背景
-        clearInterval(mySwitchBack);
+        // clearInterval(mySwitchBack);
+        clearTimeout(mySwitchBack);
     } else {
         // 切换窗口回来继续换背景
         switchBack();
