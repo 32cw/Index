@@ -7,7 +7,7 @@ function isMobile() {
 
 if (isMobile()) {
     // 隐藏wenkmPlayerc
-    document.getElementById('wenkmPlayer').style.display = 'none';
+    document.getElementById('wangPlayer').style.display = 'none';
     // 加载APlayer
     const ap = new APlayer({
         container: document.getElementById('aplayer'),
