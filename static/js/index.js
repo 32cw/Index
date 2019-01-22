@@ -6,6 +6,17 @@ function isMobile() {
 }
 
 if (isMobile()) {
+    // 加载雪花
+    html2canvas([document.body], {
+        onrendered: function(e) {
+            try {
+                var snow = detectEdge(e);
+                snow.flakeCount = 5, Snowflakes.init(snow);
+            } catch (err) {
+                console.log('[Error] Snow is not defined.');
+            }
+        }
+    });
     // 隐藏wenkmPlayerc
     document.getElementById('wangPlayer').style.display = 'none';
     // 加载APlayer
@@ -19,6 +30,18 @@ if (isMobile()) {
         audio: getLove()
     });
 } else {
+    // 加载雪花
+    html2canvas([document.body], {
+        onrendered: function(e) {
+            try {
+                var snow = detectEdge(e);
+                snow.flakeCount = 30, Snowflakes.init(snow);
+            } catch (err) {
+                console.log('[Error] Snow is not defined.');
+            }
+        }
+    });
+    // 加载Live2D
     try {
         $('body').append('<div class="waifu"><div class="waifu-tips"></div><canvas id="live2d" class="live2d"></canvas><div class="waifu-tool"><span class="fui-home"></span> <span class="fui-chat"></span> <span class="fui-eye"></span> <span class="fui-user"></span> <span class="fui-photo"></span> <span class="fui-info-circle"></span> <span class="fui-cross"></span></div></div>');
         /* 可直接修改部分参数 */
