@@ -1,3 +1,23 @@
+var data = [
+    '每天看着励志的语录却过着颓废的人生',
+    '懦弱是会传染的，并且，勇气也会',
+    '如果生活还没能改变你，那你已经失败了',
+    '没时间是最无力的借口',
+    '放下~简单两个字，寥寥十一笔',
+    '有勇气，有担当是好事，有能力才是前提',
+    '充满希望的旅途胜过终点的到达',
+    '努力到无能为力，拼搏到感动自己',
+    '就怕一生碌碌无为，还安慰自己平凡可贵',
+    '人生不能太过圆满，求而不得未必是遗憾',
+    '如果不坚强，流泪给谁看',
+    '这个世界上没有天才，只有不努力的笨蛋',
+    '心之所向，素履以往，生如逆旅，一苇以航',
+    '何必为昨天的泪，打湿今天的阳光',
+    '人生没有白走的路，每一步都算数',
+    '很多时候，不怕万人阻挡，只怕自己投降',
+    '看不透是可惜的，看透了是可悲的'
+]
+
 // PC端返回false
 function isMobile() {
     var viewType = navigator.userAgent.toLowerCase();
@@ -168,14 +188,14 @@ try {
         document.getElementById('bg').style.backgroundImage = "url(" + bingPic.url + ")";
         $("#bg").hide().fadeIn(1000);
         document.getElementById('logo').title = bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright;
-        document.getElementById('photoMsg').innerHTML = '每天看着励志的语录却过着颓废的人生';
+        document.getElementById('photoMsg').innerHTML = data[Math.floor(data.length * Math.random())];
         document.getElementById('photoMsg').title = bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright;
         document.getElementById('photoMsg').style.color = 'rgb(245, 244, 239)';
         clearInterval(myVar);
         switchBack();
     }
 } catch(err) {
-    document.getElementById('photoMsg').innerHTML = '每天看着励志的语录却过着颓废的人生';
+    document.getElementById('photoMsg').innerHTML = data[Math.floor(data.length * Math.random())];
     document.getElementById('photoMsg').style.color = 'rgb(245, 244, 239)';
     clearInterval(myVar);
     switchBack();
