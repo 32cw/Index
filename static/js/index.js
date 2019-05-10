@@ -77,7 +77,7 @@ if (isMobile()) {
         // 隐藏APlayer
         document.getElementById('aplayer').style.display = 'none';
         // 加载wenkmPlayerc
-        $.ajax({url: 'https://mark.wang64.cn/assets/wenkmPlayer/js/player.js?v=123', dataType:"script", cache: true, async: false});
+        $.ajax({url: 'https://mark.dolyw.com/assets/wenkmPlayer/js/player.js?v=123', dataType:"script", cache: true, async: false});
     } catch(err) {
         console.log('[Error] JQuery is not defined.')
     }
@@ -221,7 +221,7 @@ function changeMenu(btn) {
 
 // 切换壁纸
 function changeBack() {
-    window.location.href = "https://wang64.cn?rand=true";
+    window.location.href = "https://dolyw.com?rand=true";
 }
 
 // 浏览器切换事件

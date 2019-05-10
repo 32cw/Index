@@ -12,7 +12,7 @@ body {
     overflow-y: hidden; */
     overflow: hidden;
     /* 鼠标默认显示 */
-    cursor: url(https://note.wang64.cn/images/cursor.ico), default;
+    cursor: url(https://note.dolyw.com/images/cursor.ico), default;
 }
 /* CSS实现自适应不同大小屏幕的背景大图 https://www.jianshu.com/p/5480cd1a5d89 */
 #bg {
@@ -45,7 +45,7 @@ button {
     -webkit-transition: all .5s;
     transition: all .5s;
     font-family: 微软雅黑;
-    /* cursor: url(https://mark.wang64.cn/assets/wenkmPlayer/css/link.cur), pointer; */
+    /* cursor: url(https://mark.dolyw.com/assets/wenkmPlayer/css/link.cur), pointer; */
 }
 /* btn-1 */
 .btn-1 {
