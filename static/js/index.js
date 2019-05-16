@@ -124,6 +124,17 @@ function getStyle(element, attr) {
     }
 }
 
+function switchBtnClass() {
+    var btnClassIndex = 1;
+    for (var btnIndex = 1; btnIndex <= 7; btnIndex++) {
+        btnClassIndex = Math.floor(9 * Math.random());
+        if (btnClassIndex <= 0) {
+            btnClassIndex = 2;
+        }
+        $('#btn-' + btnIndex).removeClass().addClass("btn-" + btnClassIndex);;
+    }
+}
+
 // API接口
 var api = "https://bing.ioliu.cn/v1";
 var api2 = "https://bing.ioliu.cn/v1/rand";
@@ -152,6 +163,7 @@ function switchBack() {
                 wenkmTips.show(bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright);
             }
             clearTimeout(mySwitchBack);
+            switchBtnClass();
             switchBack();
         }, 8888);
     }
@@ -192,6 +204,7 @@ try {
         document.getElementById('photoMsg').title = bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright;
         document.getElementById('photoMsg').style.color = 'rgb(245, 244, 239)';
         clearInterval(myVar);
+        switchBtnClass();
         switchBack();
     }
 } catch(err) {
