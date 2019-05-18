@@ -158,6 +158,9 @@ function switchBack() {
             document.getElementById('bg').style.backgroundImage = "url(" + bingPic.url + ")";
             $("#bg").hide().fadeIn(1000);
             document.getElementById('logo').title = bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright;
+            $("#photoMsg").hide();
+            document.getElementById('photoMsg').innerHTML = data[Math.floor(data.length * Math.random())];
+            $("#photoMsg").fadeIn(1000);
             document.getElementById('photoMsg').title = bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright;
             if (!isMobile()) {
                 wenkmTips.show(bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright);
@@ -200,7 +203,9 @@ try {
         document.getElementById('bg').style.backgroundImage = "url(" + bingPic.url + ")";
         $("#bg").hide().fadeIn(1000);
         document.getElementById('logo').title = bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright;
+        $("#photoMsg").hide();
         document.getElementById('photoMsg').innerHTML = data[Math.floor(data.length * Math.random())];
+        $("#photoMsg").fadeIn(1000);
         document.getElementById('photoMsg').title = bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright;
         document.getElementById('photoMsg').style.color = 'rgb(245, 244, 239)';
         clearInterval(myVar);
