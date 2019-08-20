@@ -1,4 +1,4 @@
-var data = [
+var msgData = [
     '每天看着励志的语录却过着颓废的人生',
     '懦弱是会传染的，并且，勇气也会',
     '如果生活还没能改变你，那你已经失败了',
@@ -135,6 +135,19 @@ function switchBtnClass() {
     }
 }
 
+
+var randomIndex = 0;
+// 刷新随机数
+function switchRandomIndex() {
+    // 随机数不会和上一次重复，如果获取和上一次相同就重新获取，直到不同为止
+    var index = Math.floor(msgData.length * Math.random());
+    while (randomIndex == index) {
+        index = Math.floor(msgData.length * Math.random());
+        // console.log(this.randomIndex + ',' + index);
+    }
+    randomIndex = index
+}
+
 // API接口
 var api = "https://bing.ioliu.cn/v1";
 var api2 = "https://bing.ioliu.cn/v1/rand";
@@ -159,7 +172,8 @@ function switchBack() {
             $("#bg").hide().fadeIn(1000);
             document.getElementById('logo').title = bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright;
             $("#photoMsg").hide();
-            document.getElementById('photoMsg').innerHTML = data[Math.floor(data.length * Math.random())];
+            switchRandomIndex();
+            document.getElementById('photoMsg').innerHTML = msgData[randomIndex];
             $("#photoMsg").fadeIn(1000);
             document.getElementById('photoMsg').title = bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright;
             if (!isMobile()) {
@@ -204,7 +218,8 @@ try {
         $("#bg").hide().fadeIn(1000);
         document.getElementById('logo').title = bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright;
         $("#photoMsg").hide();
-        document.getElementById('photoMsg').innerHTML = data[Math.floor(data.length * Math.random())];
+        switchRandomIndex();
+        document.getElementById('photoMsg').innerHTML = msgData[randomIndex];
         $("#photoMsg").fadeIn(1000);
         document.getElementById('photoMsg').title = bingPic.date + ' - ' + bingPic.title + ' - ' + bingPic.copyright;
         document.getElementById('photoMsg').style.color = 'rgb(245, 244, 239)';
@@ -213,7 +228,8 @@ try {
         switchBack();
     }
 } catch(err) {
-    document.getElementById('photoMsg').innerHTML = data[Math.floor(data.length * Math.random())];
+    switchRandomIndex();
+    document.getElementById('photoMsg').innerHTML = msgData[randomIndex];
     document.getElementById('photoMsg').style.color = 'rgb(245, 244, 239)';
     clearInterval(myVar);
     switchBack();
