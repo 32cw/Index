@@ -15,7 +15,11 @@ var msgData = [
     '何必为昨天的泪，打湿今天的阳光',
     '人生没有白走的路，每一步都算数',
     '很多时候，不怕万人阻挡，只怕自己投降',
-    '看不透是可惜的，看透了是可悲的'
+    '看不透是可惜的，看透了是可悲的',
+    '不管多么痛苦，都不要逃往轻松的一边',
+    '别在最能吃苦的年纪选择了安逸',
+    '没有未来的未来不是我想要的未来',
+    '愿你出走半生，归来仍是少年'
 ]
 
 // PC端返回false
@@ -187,12 +191,12 @@ function switchBack() {
 }
 
 // 初始化加载Bing每日图片，查看秒数个位为0，3，7或者地址栏有rand参数便随机获取背景图，其他获取当日图片
-try {
+/* try {
     // 如果屏幕小就加载竖屏
-    /* if(getStyle(document.getElementById("size"), "fontSize") == '12px') {
+    if(getStyle(document.getElementById("size"), "fontSize") == '12px') {
         // console.log(getStyle(document.getElementById("size"), "fontSize"));
         size = "?h=1920&w=1080";
-    } */
+    }
     // var url = api + size;
     var date = new Date();
     var seconds = date.getSeconds();
@@ -233,6 +237,33 @@ try {
     document.getElementById('photoMsg').style.color = 'rgb(245, 244, 239)';
     clearInterval(myVar);
     switchBack();
+} finally {
+    
+} */
+
+try {
+    document.getElementById("msg").innerHTML = "背景加载中";
+    var img = new Image();
+    var imgUrl = 'https://dolyw.gitee.io/2019/11/20191101001.jpg';
+    img.src = imgUrl;
+    img.onload = function () {
+        /* document.getElementById('bg').style.backgroundImage = "url(" + imgUrl + ")";
+        $("#bg").hide().fadeIn(1000); */
+        $("#bg").hide()
+        document.getElementById('bg').style.backgroundImage = "url(" + imgUrl + ")";
+        $("#bg").fadeIn(1000);
+        $("#photoMsg").hide();
+        switchRandomIndex();
+        document.getElementById('photoMsg').innerHTML = msgData[randomIndex];
+        $("#photoMsg").fadeIn(1000);
+        document.getElementById('photoMsg').style.color = 'rgb(245, 244, 239)';
+        switchBtnClass();
+    }
+} catch(err) {
+    switchRandomIndex();
+    document.getElementById('photoMsg').innerHTML = msgData[randomIndex];
+    document.getElementById('photoMsg').style.color = 'rgb(245, 244, 239)';
+    switchBtnClass();
 } finally {
     
 }
