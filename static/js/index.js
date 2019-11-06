@@ -267,7 +267,7 @@ function switchBack() {
 try {
     document.getElementById("msg").innerHTML = "背景加载中";
     var img = new Image();
-    var imgUrl = 'https://dolyw.gitee.io/2019/11/20191101001.jpg';
+    var imgUrl = 'https://cdn.dolyw.com/2019/11/20191101001.jpg';
     img.src = imgUrl;
     img.onload = function () {
         /* document.getElementById('bg').style.backgroundImage = "url(" + imgUrl + ")";
