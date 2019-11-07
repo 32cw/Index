@@ -143,9 +143,6 @@ var btnClassArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
  */
 function switchBtnClass() {
     // 根据秒数显示音乐还是书签
-    var date = new Date();
-    var seconds = date.getSeconds();
-    // String(seconds).length < 2 ? (seconds = "0" + seconds) : seconds;
     if (seconds % 2 == 0) {
         $('#btn-7').html("书签");
         // https://dolyw.com/load?url=https://mark.dolyw.com
@@ -264,10 +261,21 @@ function switchBack() {
     
 } */
 
+// 获取当前时间
+var date = new Date();
+var seconds = date.getSeconds();
+// String(seconds).length < 2 ? (seconds = "0" + seconds) : seconds;
+
 try {
     document.getElementById("msg").innerHTML = "背景加载中";
     var img = new Image();
-    var imgUrl = 'https://cdn.dolyw.com/2019/11/20191101001.jpg';
+    var imgUrl = 'https://cdn.dolyw.com/wallpaper/201911/20191101005.jpg';
+    if (seconds % 2 == 0) {
+        imgUrl = 'https://cdn.dolyw.com/wallpaper/201911/20191107005.jpg';
+    }
+    if (seconds % 5 == 0) {
+        imgUrl = 'https://cdn.dolyw.com/wallpaper/201911/20191107010.jpg';
+    }
     img.src = imgUrl;
     img.onload = function () {
         /* document.getElementById('bg').style.backgroundImage = "url(" + imgUrl + ")";
