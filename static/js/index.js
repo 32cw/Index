@@ -82,7 +82,7 @@ if (isMobile()) {
         // 隐藏APlayer
         document.getElementById('aplayer').style.display = 'none';
         // 加载wenkmPlayerc
-        $.ajax({url: 'https://mark.dolyw.com/assets/wenkmPlayer/js/player.js?v=123', dataType:"script", cache: true, async: false});
+        $.ajax({url: 'https://cdn.jsdelivr.net/gh/wliduo/Mark@master/assets/wenkmPlayer/js/player.js?v=123', dataType:"script", cache: true, async: false});
     } catch(err) {
         console.log('[Error] JQuery is not defined.')
     }
@@ -269,12 +269,12 @@ var seconds = date.getSeconds();
 try {
     document.getElementById("msg").innerHTML = "背景加载中";
     var img = new Image();
-    var imgUrl = 'https://cdn.dolyw.com/wallpaper/201911/20191101005.jpg';
+    var imgUrl = 'https://cdn.jsdelivr.net/gh/wliduo/CDN@master/wallpaper/201911/20191101005.jpg';
     if (seconds % 2 == 0) {
-        imgUrl = 'https://cdn.dolyw.com/wallpaper/201911/20191107005.jpg';
+        imgUrl = 'https://cdn.jsdelivr.net/gh/wliduo/CDN@master/wallpaper/201911/20191107005.jpg';
     }
     if (seconds % 5 == 0) {
-        imgUrl = 'https://cdn.dolyw.com/wallpaper/201911/20191107010.jpg';
+        imgUrl = 'https://cdn.jsdelivr.net/gh/wliduo/CDN@master/wallpaper/201911/20191107010.jpg';
     }
     img.src = imgUrl;
     img.onload = function () {
