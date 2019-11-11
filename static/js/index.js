@@ -77,7 +77,7 @@ if (isMobile()) {
         live2d_settings['aboutPageUrl'] = 'https://github.com/fghrsh/live2d_demo';   // 关于页地址
         live2d_settings['hitokotoAPI'] = 'hitokoto.cn';
         /* 在 initModel 前添加 */
-        initModel("https://www.fghrsh.net/zb_users/plugin/live2d/assets/waifu-tips.json?v=1.4.2");
+        initModel("https://cdn.jsdelivr.net/gh/wliduo/Mark@master/assets/live2d/waifu-tips.json?v=1.4.2");
 
         // 隐藏APlayer
         document.getElementById('aplayer').style.display = 'none';

@@ -13,7 +13,7 @@ body {
     overflow-y: hidden; */
     overflow: hidden;
     /* 鼠标默认显示 */
-    cursor: url(https://blog.dolyw.com/images/cursor.ico), default;
+    cursor: url(https://cdn.jsdelivr.net/gh/wliduo/Index@master/static/cursor.ico), default;
 }
 /* CSS实现自适应不同大小屏幕的背景大图 https://www.jianshu.com/p/5480cd1a5d89 */
 #bg {
