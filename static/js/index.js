@@ -143,20 +143,26 @@ var btnClassArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
  */
 function switchBtnClass() {
     // 根据秒数显示音乐还是书签
-    if (seconds % 2 == 0) {
+    var secondsTemp = new Date().getSeconds();
+    if (secondsTemp % 2 == 0) {
         $('#btn-7').html("书签");
         // https://dolyw.com/load?url=https://mark.dolyw.com
         $('#btn-7').parent("a").attr("href", "https://dolyw.com/go?url=https://mark.dolyw.com");
+    } else {
+        $('#btn-7').html("友链");
+        $('#btn-7').parent("a").attr("href", "https://dolyw.com/go?url=https://friend.dolyw.com");
     }
     // 切换按钮颜色
     var btnClassIndex = 1;
-    for (var btnIndex = 1; btnIndex <= 7; btnIndex++) {
+    for (var btnIndex = 1; btnIndex <= 8; btnIndex++) {
         btnClassIndex = Math.floor(btnClassArray.length * Math.random());
         // console.log(btnClassArray[btnClassIndex]);
         $('#btn-' + btnIndex).removeClass().addClass("btn-" + btnClassArray[btnClassIndex]);
         // 移除当前坐标数据
         btnClassArray.splice(btnClassIndex, 1);
     }
+    // 初始化
+    btnClassArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 }
 
 
@@ -187,7 +193,7 @@ function switchBack() {
     // d = Math.floor(1000 * Math.random());
     var temp = new Image();
     // temp.src = api + size + "&d=" + d;
-    bingPic = getPic(true);
+    bingPic = getPic(false);
     temp.src = bingPic.url;
     temp.onload = function () {
         var mySwitchBack = setTimeout(function fn() {
@@ -297,6 +303,54 @@ try {
     switchBtnClass();
 } finally {
     
+}
+
+var switchFlag = false;
+function switchBing() {
+    if (switchFlag) {
+        if (!isMobile()) {
+            wenkmTips.show('正在切换请稍后');
+        }
+        return false;
+    }
+    switchFlag = true;
+    if (!isMobile()) {
+        wenkmTips.show('切换Bing壁纸');
+    }
+    $.get(bingCDN, function (data) {
+        // console.log(data);
+        if (data && data.url) {
+            var temp = new Image();
+            temp.src = data.url;
+            temp.onload = function () {
+                document.getElementById('bg').style.backgroundImage = "url(" + data.url + ")";
+                $("#bg").hide().fadeIn(1000);
+                document.getElementById('logo').title = data.date + ' - ' + data.title + ' - ' + data.copyright;
+                $("#photoMsg").hide();
+                switchRandomIndex();
+                document.getElementById('photoMsg').innerHTML = msgData[randomIndex];
+                $("#photoMsg").fadeIn(1000);
+                document.getElementById('photoMsg').title = data.date + ' - ' + data.title + ' - ' + data.copyright;
+                switchBtnClass();
+                switchFlag = false;
+                if (!isMobile()) {
+                    wenkmTips.show(data.date + ' - ' + data.title + ' - ' + data.copyright);
+                }
+            }
+        } else {
+            if (!isMobile()) {
+                wenkmTips.show('切换Bing壁纸错误');
+            }
+            console.log("切换Bing壁纸错误");
+            switchFlag = false;
+        }
+    }).fail(function () {
+        if (!isMobile()) {
+            wenkmTips.show('切换Bing壁纸错误');
+        }
+        console.log("切换Bing壁纸错误");
+        switchFlag = false;
+    });
 }
 
 // 切换菜单
