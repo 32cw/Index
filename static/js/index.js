@@ -85,6 +85,11 @@ if (isMobile()) {
         $.ajax({url: 'https://cdn.jsdelivr.net/gh/wliduo/Mark@master/assets/wenkmPlayer/js/player.js?v=123', dataType:"script", cache: true, async: false});
     } catch(err) {
         console.log('[Error] JQuery is not defined.')
+    } finally {
+        $(window).load(function () {
+            wenkmTips.show('欢迎访问我的小破站');
+            $("div[class='switch-player']")[0].click();
+        });
     }
 }
 
