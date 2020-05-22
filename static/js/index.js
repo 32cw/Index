@@ -325,23 +325,29 @@ function switchBing() {
     $.get(bingCDN, function (data) {
         // console.log(data);
         if (data && data.url) {
-            var temp = new Image();
-            temp.src = data.url;
-            temp.onload = function () {
-                document.getElementById('bg').style.backgroundImage = "url(" + data.url + ")";
-                $("#bg").hide().fadeIn(1000);
-                document.getElementById('logo').title = data.date + ' - ' + data.title + ' - ' + data.copyright;
-                $("#photoMsg").hide();
-                switchRandomIndex();
-                document.getElementById('photoMsg').innerHTML = msgData[randomIndex];
-                $("#photoMsg").fadeIn(1000);
-                document.getElementById('photoMsg').title = data.date + ' - ' + data.title + ' - ' + data.copyright;
-                switchBtnClass();
-                switchFlag = false;
-                if (!isMobile()) {
-                    wenkmTips.show(data.date + ' - ' + data.title + ' - ' + data.copyright);
-                }
-            }
+            data.enddate = data.date;
+            data.copyright = data.title + ' ' + data.copyright;
+            picLoad(data);
+        } else {
+            console.log("切换Bing壁纸错误");
+            switchBingTo();
+        }
+    }).fail(function () {
+        console.log("切换Bing壁纸错误");
+        switchBingTo();
+    });
+}
+
+function switchBingTo() {
+    $.ajax({
+        url: bingApi5,
+        type: 'get',
+        dataType: 'jsonp'
+    }).done(function (result) {
+        var data = result.data;
+        // console.log(data);
+        if (data && data.url) {
+            picLoad(data);
         } else {
             if (!isMobile()) {
                 wenkmTips.show('切换Bing壁纸错误');
@@ -356,6 +362,26 @@ function switchBing() {
         console.log("切换Bing壁纸错误");
         switchFlag = false;
     });
+}
+
+function picLoad(data) {
+    var temp = new Image();
+    temp.src = data.url;
+    temp.onload = function () {
+        document.getElementById('bg').style.backgroundImage = "url(" + data.url + ")";
+        $("#bg").hide().fadeIn(1000);
+        document.getElementById('logo').title = data.enddate + ' - ' + data.copyright;
+        $("#photoMsg").hide();
+        switchRandomIndex();
+        document.getElementById('photoMsg').innerHTML = msgData[randomIndex];
+        $("#photoMsg").fadeIn(1000);
+        document.getElementById('photoMsg').title = data.enddate + ' - ' + data.copyright;
+        switchBtnClass();
+        switchFlag = false;
+        if (!isMobile()) {
+            wenkmTips.show(data.enddate + ' - ' + data.copyright);
+        }
+    }
 }
 
 // 切换菜单
