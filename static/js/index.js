@@ -152,10 +152,10 @@ function switchBtnClass() {
     if (secondsTemp % 2 == 0) {
         $('#btn-7').html("书签");
         // https://dolyw.com/load?url=https://mark.dolyw.com
-        $('#btn-7').parent("a").attr("href", "https://dolyw.com/go?url=https://mark.dolyw.com");
+        $('#btn-7').parent("a").attr("href", "https://dolyw.com/go.html?url=https://mark.dolyw.com");
     } else {
         $('#btn-7').html("友链");
-        $('#btn-7').parent("a").attr("href", "https://dolyw.com/go?url=https://friend.dolyw.com");
+        $('#btn-7').parent("a").attr("href", "https://dolyw.com/go.html?url=https://friend.dolyw.com");
     }
     // 切换按钮颜色
     var btnClassIndex = 1;
