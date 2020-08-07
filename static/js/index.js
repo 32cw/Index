@@ -148,7 +148,7 @@ var btnClassArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
  */
 function switchBtnClass() {
     // 根据秒数显示音乐还是书签
-    var secondsTemp = new Date().getSeconds();
+    /* var secondsTemp = new Date().getSeconds();
     if (secondsTemp % 2 == 0) {
         $('#btn-7').html("书签");
         // https://dolyw.com/load?url=https://mark.dolyw.com
@@ -156,7 +156,7 @@ function switchBtnClass() {
     } else {
         $('#btn-7').html("友链");
         $('#btn-7').parent("a").attr("href", "https://dolyw.com/go.html?url=https://friend.dolyw.com");
-    }
+    } */
     // 切换按钮颜色
     var btnClassIndex = 1;
     for (var btnIndex = 1; btnIndex <= 8; btnIndex++) {
